@@ -1,6 +1,25 @@
 UnBundle 'bling/vim-bufferline'
 
-set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 12
+silent function! OSX()
+return has('macunix')
+endfunction
+silent function! LINUX()
+return has('unix') && !has('macunix') && !has('win32unix')
+endfunction
+silent function! WINDOWS()
+return  (has('win16') || has('win32') || has('win64'))
+endfunction
+
+if LINUX() && has("gui_running")
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 16
+elseif OSX() && has("gui_running")
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h16
+elseif WINDOWS() && has("gui_running")
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h16
+endif
+
+colorscheme desert
+
 set go-=L
 set go-=R
 set go-=l
@@ -75,7 +94,19 @@ augroup end
 "
 map <leader>nf :NERDTreeFind<cr>
 map <leader>sc :JavaSearchContext<cr>
+map <C-1> :JavaCorrect<cr>
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
+if OSX() && has("gui_running")
+    map <D-1> :JavaDorrect<cr>
+    map <D-J> <C-W>j
+    map <D-K> <C-W>k
+    map <D-L> <C-W>l
+    map <D-H> <C-W>h
+    map <D-d> <C-d>
+    map <D-u> <C-u>
+    map <D-p> <C-p>
+    map <D-t> <C-t>
+endif
