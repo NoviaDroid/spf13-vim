@@ -11,11 +11,11 @@ return  (has('win16') || has('win32') || has('win64'))
 endfunction
 
 if LINUX() && has("gui_running")
-    set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 12
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
 elseif OSX() && has("gui_running")
-    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h16
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h14
 elseif WINDOWS() && has("gui_running")
-    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h16
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h14
 endif
 
 let g:airline_theme = 'hybrid'
@@ -49,8 +49,8 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
 
 let NERDTreeQuitOnOpen=0
-"let g:nerdtree_tabs_open_on_gui_startup=1
-"let g:nerdtree_tabs_open_on_new_tab=1
+let g:nerdtree_tabs_open_on_gui_startup=1
+let g:nerdtree_tabs_open_on_new_tab=1
 let NERDTreeMouseMode=1
 
 let g:EclimCompletionMethod='omnifunc'
@@ -79,8 +79,8 @@ if executable('ag')
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     let g:ctrlp_user_command =
                 \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
+    " Though ag is fast, but for large amount of files still need cache
+    let g:ctrlp_use_caching = 1
 else
     " Fall back to using git ls-files if Ag is not available
     let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
