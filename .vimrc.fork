@@ -22,7 +22,7 @@ let g:airline_theme = 'hybrid'
 colorscheme apprentice
 
 set cursorline                  " Highlight current line
-hi CursorLine   cterm=NONE ctermbg=237 ctermfg=NONE guibg=#4e4e4e
+hi CursorLine   cterm=NONE ctermbg=237 ctermfg=NONE guibg=#444444
 
 highlight clear SignColumn      " SignColumn should match background
 highlight clear LineNr          " Current line number row will have same background color in relative mode
