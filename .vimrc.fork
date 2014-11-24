@@ -13,7 +13,7 @@ endfunction
 if LINUX() && has("gui_running")
     set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
 elseif OSX() && has("gui_running")
-    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h14
+    set gfn=Ubuntu\ Mono\ derivative\ Powerline:h18
 elseif WINDOWS() && has("gui_running")
     set gfn=Ubuntu\ Mono\ derivative\ Powerline:h14
 endif
@@ -54,6 +54,12 @@ let g:nerdtree_tabs_open_on_new_tab=1
 let NERDTreeMouseMode=1
 
 let g:EclimCompletionMethod='omnifunc'
+
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+
 let g:SuperTabDefaultCompletionType='context'
 let NERDTreeShowBookmarks=1
 let g:tagbar_iconchars=['+', '-']
@@ -62,6 +68,7 @@ let delimitMate_expand_space=1
 
 " ctrlp speed up
 let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_use_caching = 1
 " Set delay to prevent extra search
 let g:ctrlp_lazy_update=350
 
@@ -79,8 +86,6 @@ if executable('ag')
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     let g:ctrlp_user_command =
                 \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
-    " Though ag is fast, but for large amount of files still need cache
-    let g:ctrlp_use_caching = 1
 else
     " Fall back to using git ls-files if Ag is not available
     let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
@@ -108,7 +113,7 @@ map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
 if OSX() && has("gui_running")
-    map <D-1> :JavaDorrect<cr>
+    map <D-1> :JavaCorrect<cr>
     map <D-J> <C-W>j
     map <D-K> <C-W>k
     map <D-L> <C-W>l
