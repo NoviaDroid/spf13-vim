@@ -34,6 +34,18 @@ set go-=l
 set go-=r
 set nospell
 
+if OSX()
+    set macmeta
+endif
+
+" fix meta-keys which generate <Esc>a .. <Esc>z
+let c='a'
+while c <= 'z'
+  exec "set <M-".toupper(c).">=\e".c
+  exec "imap \e".c." <M-".toupper(c).">"
+  let c = nr2char(1+char2nr(c))
+endw
+
 let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_left_alt_sep='|'
@@ -107,13 +119,15 @@ augroup end
 "
 map <leader>nf :NERDTreeFind<cr>
 map <leader>sc :JavaSearchContext<cr>
-map <C-1> :JavaCorrect<cr>
+map <Leader>jc :JavaCorrect<cr>
+"map <C-1> :JavaCorrect<cr>
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
+nmap <C-t> :CtrlP .<cr>
 if OSX() && has("gui_running")
-    map <D-1> :JavaCorrect<cr>
+    "map <D-1> :JavaCorrect<cr>
     map <D-J> <C-W>j
     map <D-K> <C-W>k
     map <D-L> <C-W>l
