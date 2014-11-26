@@ -117,6 +117,7 @@ augroup end
 "let g:ycm_key_list_previous_completion=[‘<C-S-TAB>’, ‘<Up>’]
 "let g:SuperTabDefaultCompletionType=‘<C-Tab>’
 "
+inoremap ;; <Esc>
 map <leader>nf :NERDTreeFind<cr>
 map <leader>sc :JavaSearchContext<cr>
 map <Leader>jc :JavaCorrect<cr>
