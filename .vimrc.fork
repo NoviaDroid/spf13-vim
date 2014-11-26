@@ -34,7 +34,7 @@ set go-=l
 set go-=r
 set nospell
 
-if OSX()
+if OSX() && has("gui_running")
     set macmeta
 endif
 
