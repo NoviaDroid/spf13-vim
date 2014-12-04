@@ -100,7 +100,7 @@ if executable('ag')
                 \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
 else
     " Fall back to using git ls-files if Ag is not available
-    let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+    "let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
 
