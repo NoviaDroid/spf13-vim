@@ -57,6 +57,8 @@ let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod=':t'
 
