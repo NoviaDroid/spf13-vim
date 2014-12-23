@@ -130,19 +130,16 @@ map <leader>nf :NERDTreeFind<cr>
 map <leader>sc :JavaSearchContext<cr>
 map <Leader>jc :JavaCorrect<cr>
 "map <C-1> :JavaCorrect<cr>
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-W>l
-map <C-H> <C-W>h
 nmap <C-t> :CtrlP .<cr>
-if OSX() && has("gui_running")
-    "map <D-1> :JavaCorrect<cr>
-    map <D-J> <C-W>j
-    map <D-K> <C-W>k
-    map <D-L> <C-W>l
-    map <D-H> <C-W>h
-    map <D-d> <C-d>
-    map <D-u> <C-u>
-    map <D-p> <C-p>
-    map <D-t> <C-t>
-endif
+
+"if OSX() && has("gui_running")
+    ""map <D-1> :JavaCorrect<cr>
+    "map <D-J> <C-W>j
+    "map <D-K> <C-W>k
+    "map <D-L> <C-W>l
+    "map <D-H> <C-W>h
+    "map <D-d> <C-d>
+    "map <D-u> <C-u>
+    "map <D-p> <C-p>
+    "map <D-t> <C-t>
+"endif
