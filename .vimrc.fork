@@ -26,6 +26,8 @@ endif
 
 let g:airline_theme = 'hybrid'
 colorscheme apprentice
+set scrolljump=1                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
 
 set cursorline                  " Highlight current line
 hi CursorLine   cterm=NONE ctermbg=237 ctermfg=NONE guibg=#444444
@@ -75,12 +77,12 @@ let NERDTreeMouseMode=1
 
 let g:EclimCompletionMethod='omnifunc'
 
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+"if !exists('g:neocomplcache_force_omni_patterns')
+  "let g:neocomplcache_force_omni_patterns = {}
+"endif
+"let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
-let g:SuperTabDefaultCompletionType='context'
+"let g:SuperTabDefaultCompletionType='context'
 let NERDTreeShowBookmarks=1
 let g:tagbar_iconchars=['+', '-']
 let delimitMate_expand_cr=1
