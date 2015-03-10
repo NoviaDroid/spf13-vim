@@ -1,11 +1,5 @@
 UnBundle 'bling/vim-bufferline'
 
-" Change cursor shape between insert and normal mode in iTerm2.app
-if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
-
 silent function! OSX()
 return has('macunix')
 endfunction
@@ -133,8 +127,24 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 "let g:SuperTabDefaultCompletionType=‘<C-Tab>’
-"
-inoremap ;; <Esc>
+
+" fix esc slow issue
+set timeout " Do time out on mappings and others
+set timeoutlen=2000 " Wait {num} ms before timing out a mapping
+
+" When you’re pressing Escape to leave insert mode in the terminal, it will by
+" default take a second or another keystroke to leave insert mode completely
+" and update the statusline. This fixes that. I got this from:
+" https://powerline.readthedocs.org/en/latest/tipstricks.html#vim
+if !has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
 map <leader>nf :NERDTreeFind<cr>
 map <leader>sc :JavaSearchContext<cr>
 map <Leader>jc :JavaCorrect<cr>
